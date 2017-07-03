@@ -19,6 +19,7 @@ module ShoppingSample
 
     config.generators do |generator|
       generator.assets false
+      generator.skip_routes true
     end
   end
 end
