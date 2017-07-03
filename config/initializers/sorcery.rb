@@ -286,14 +286,14 @@ Rails.application.config.sorcery.configure do |config|
     # your mailer class. Required.
     # Default: `nil`
     #
-    # user.user_activation_mailer =
+    user.user_activation_mailer = nil
 
     # when true sorcery will not automatically
     # email activation details and allow you to
     # manually handle how and when email is sent.
     # Default: `false`
     #
-    # user.activation_mailer_disabled =
+    user.activation_mailer_disabled = true
 
     # method to send email related
     # options: `:deliver_later`, `:deliver_now`, `:deliver`
@@ -314,7 +314,7 @@ Rails.application.config.sorcery.configure do |config|
     # do you want to prevent or allow users that did not activate by email to login?
     # Default: `true`
     #
-    # user.prevent_non_active_users_to_login =
+    user.prevent_non_active_users_to_login = false
 
     # -- reset_password --
     # reset password code attribute name.
