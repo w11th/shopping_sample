@@ -1,7 +1,7 @@
 class Product < ApplicationRecord
   belongs_to :category
 
-  validates_uniquness_of :uuid
+  validates_uniqueness_of :uuid
 
   before_create :set_default_attrs
 
