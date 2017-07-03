@@ -286,7 +286,7 @@ Rails.application.config.sorcery.configure do |config|
     # your mailer class. Required.
     # Default: `nil`
     #
-    user.user_activation_mailer = nil
+    # user.user_activation_mailer = UserMailer
 
     # when true sorcery will not automatically
     # email activation details and allow you to
@@ -335,7 +335,7 @@ Rails.application.config.sorcery.configure do |config|
     # mailer class. Needed.
     # Default: `nil`
     #
-    # user.reset_password_mailer =
+    user.reset_password_mailer = UserMailer
 
     # reset password email method on your mailer class.
     # Default: `:reset_password_email`
