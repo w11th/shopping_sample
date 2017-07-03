@@ -1,0 +1,54 @@
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="<%= root_path %>">蛋人商城</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="<%= root_path %>">Home <span class="sr-only">(current)</span></a></li>
+      </ul>
+      <%= form_tag root_path, method: :get, class: "navbar-form navbar-left" do %>
+        <div class="form-group">
+          <% if @category %>
+            <input name="category_id" type="hidden" value="<%= @category.id %>"/>
+          <% end %>
+          <input name="w" type="text" value="<%= params[:w] %>" class="form-control search-input" placeholder="<%= @category? "在 #{@category.title} 下搜索..." : "搜索整站商品..."%>"/>
+          <button class="btn btn-default" type="submit">搜索</button>
+        </div>
+      <% end %>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "购物车(#{@shopping_cart_count})", "#" %></li>
+        <% unless logged_in? %>
+          <li><a href="#">注册</a></li>
+          <li><a href="#">登录</a></li>
+        <% else %>
+          <li><a href="#">欢迎您，<%= current_user.name %></a></li>
+          <li><%= link_to "退出", "#", method: :delete %></li>
+        <% end -%>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">个人中心 <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="">我的订单</a>
+            </li>
+            <li>
+              <a href="">我的收获地址</a>
+            </li>
+            <li role="seperator" class="divider">
+            </li>
+            <li>
+              <a href="">个人信息</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
