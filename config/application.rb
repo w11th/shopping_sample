@@ -20,6 +20,7 @@ module ShoppingSample
     config.generators do |generator|
       generator.assets false
       generator.skip_routes true
+      generator.test_framework nil
     end
   end
 end
