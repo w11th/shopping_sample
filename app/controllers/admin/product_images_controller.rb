@@ -26,6 +26,16 @@ class Admin::ProductImagesController < Admin::BaseController
     redirect_back fallback_location: admin_product_product_images_path(@product)
   end
 
+  def update
+    @product_image = @product.product_images.find(params[:id])
+    flash[:notice] = if @product_image.update(weight: params[:weight])
+                       '修改成功'
+                     else
+                       '修改失败'
+                     end
+    redirect_back fallback_location: admin_product_product_images_path(@product)
+  end
+
   private
 
   def set_product

@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :users
-  resources :sessions
+  resources :sessions, only: %i[new create destroy]
+  resources :categories, only: %i[show]
+  resources :products, only: %i[show]
 
   delete '/logout' => 'sessions#destroy', as: :logout
 
@@ -11,7 +13,7 @@ Rails.application.routes.draw do
     resources :sessions
     resources :categories
     resources :products do
-      resources :product_images, only: %i[index create destroy]
+      resources :product_images, only: %i[index create destroy update]
     end
   end
 end

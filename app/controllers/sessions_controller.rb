@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if user = login(params[:email], params[:password])
+    if login(params[:email], params[:password])
       flash[:notice] = '登录成功'
       redirect_to root_path
     else
