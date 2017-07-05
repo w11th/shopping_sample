@@ -7,9 +7,11 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy', as: :logout
 
   namespace :admin do
-    root 'categories#index'
+    root 'sessions#new'
     resources :sessions
     resources :categories
-    resources :products
+    resources :products do
+      resources :product_images, only: %i[index create destroy]
+    end
   end
 end
