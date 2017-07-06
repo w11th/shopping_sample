@@ -3,11 +3,15 @@ Rails.application.routes.draw do
 
   resources :users
   resources :sessions, only: %i[new create destroy]
+  delete '/logout' => 'sessions#destroy', as: :logout
+
   resources :categories, only: %i[show]
   resources :products, only: %i[show]
   resources :shopping_carts
-
-  delete '/logout' => 'sessions#destroy', as: :logout
+  resources :addresses do
+    put 'set_default_address', on: :member
+  end
+  resources :orders
 
   namespace :admin do
     root 'sessions#new'
