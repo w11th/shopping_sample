@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     put 'set_default_address', on: :member
   end
   resources :orders
+  resources :payments
 
   namespace :admin do
     root 'sessions#new'

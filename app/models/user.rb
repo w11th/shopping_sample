@@ -13,6 +13,8 @@ class User < ApplicationRecord
   has_many :addresses, -> { where(address_type: Address::AddressType::User).order('id desc') }
   belongs_to :default_address, class_name: :Address, optional: true
 
+  has_many :orders
+
   private
 
   def need_validate_password
