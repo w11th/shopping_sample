@@ -16,6 +16,11 @@ module ShoppingSample
     # -- all .rb files in that directory are automatically loaded.
 
     # config.enable_dependency_loading = true if Rails.env == 'development'
+    ENV['ALIPAY_PID'] = 'YOUR_ALIPAY_PARTNER_ID'
+    ENV['ALIPAY_MD5_SECRET'] = 'YOUR_ALIPAY_MD5_SECRET'
+    ENV['ALIPAY_URL'] = 'https://mapi.alipay.com/gateway.do'
+    ENV['ALIPAY_RETURN_URL'] = 'http://localhost:3000/payments/pay_return'
+    ENV['ALIPAY_NOTIFY_URL'] = 'http://localhost:3000/payments/pay_notify'
 
     config.autoload_paths << "#{Rails.root}/lib"
 

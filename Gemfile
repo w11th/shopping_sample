@@ -35,6 +35,7 @@ gem 'font-awesome-rails'
 
 gem 'sorcery'
 gem 'ancestry'
+gem 'rest-client'
 
 gem 'will_paginate'
 gem "paperclip", "~> 5.0.0"

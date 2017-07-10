@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170706070111) do
+ActiveRecord::Schema.define(version: 20170706085535) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,8 +48,26 @@ ActiveRecord::Schema.define(version: 20170706070111) do
     t.datetime "payment_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "payment_id"
+    t.string "status", default: "initial"
     t.index ["order_no"], name: "index_orders_on_order_no", unique: true
+    t.index ["payment_id"], name: "index_orders_on_payment_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "payment_no"
+    t.string "transaction_no"
+    t.string "status", default: "initial"
+    t.decimal "total_money", precision: 10, scale: 2
+    t.datetime "payment_at"
+    t.text "raw_response"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["payment_no"], name: "index_payments_on_payment_no", unique: true
+    t.index ["transaction_no"], name: "index_payments_on_transaction_no"
+    t.index ["user_id"], name: "index_payments_on_user_id"
   end
 
   create_table "product_images", force: :cascade do |t|

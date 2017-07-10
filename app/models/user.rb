@@ -14,6 +14,7 @@ class User < ApplicationRecord
   belongs_to :default_address, class_name: :Address, optional: true
 
   has_many :orders
+  has_many :payments
 
   private
 

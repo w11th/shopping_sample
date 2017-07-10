@@ -12,7 +12,15 @@ Rails.application.routes.draw do
     put 'set_default_address', on: :member
   end
   resources :orders
-  resources :payments
+  resources :payments, only: [:index] do
+    collection do
+      get 'generate_pay'
+      get 'pay_return'
+      get 'pay_notify'
+      get 'success'
+      get 'failed'
+    end
+  end
 
   namespace :admin do
     root 'sessions#new'
