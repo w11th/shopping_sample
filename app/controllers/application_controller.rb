@@ -6,10 +6,9 @@ class ApplicationController < ActionController::Base
   protected
 
   def auth_user
-    unless logged_in?
-      flash[:notice] = '请登录'
-      redirect_to new_session_path
-    end
+    return if logged_in?
+    flash[:notice] = '请登录'
+    redirect_to new_session_path
   end
 
   def fetch_home_data

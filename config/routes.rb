@@ -11,6 +11,19 @@ Rails.application.routes.draw do
   resources :addresses do
     put 'set_default_address', on: :member
   end
+
+  namespace :dashboard do
+    scope 'profile' do
+      controller :profile do
+        get :password
+        put :update_password
+      end
+    end
+
+    resources :orders, only: [:index]
+    resources :addresses, only: [:index]
+  end
+
   resources :orders
   resources :payments, only: [:index] do
     collection do
