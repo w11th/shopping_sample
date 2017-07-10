@@ -1,9 +1,12 @@
 class UsersController < ApplicationController
   def new
+    @is_using_email = true
     @user = User.new
   end
 
   def create
+    @is_using_email = params[:user] && !params[:user][:email].blank?
+
     @user = User.new(user_params)
     @user.uuid = session[:user_uuid]
 
@@ -18,6 +21,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:email, :cellphone, :token, :password, :password_confirmation)
   end
 end

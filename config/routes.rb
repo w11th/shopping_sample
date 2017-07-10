@@ -35,6 +35,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :cellphone_tokens, only: [:create]
+
   namespace :admin do
     root 'sessions#new'
     resources :sessions
