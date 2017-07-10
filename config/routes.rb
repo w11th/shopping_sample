@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy', as: :logout
 
   resources :categories, only: %i[show]
-  resources :products, only: %i[show]
+
+  resources :products, only: %i[show] do
+    get 'search', on: :collection
+  end
+
   resources :shopping_carts
   resources :addresses do
     put 'set_default_address', on: :member
@@ -38,7 +42,7 @@ Rails.application.routes.draw do
   resources :cellphone_tokens, only: [:create]
 
   namespace :admin do
-    root 'sessions#new'
+    root 'categories#index'
     resources :sessions
     resources :categories
     resources :products do
