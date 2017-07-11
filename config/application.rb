@@ -30,5 +30,7 @@ module ShoppingSample
       generator.skip_routes true
       generator.test_framework nil
     end
+
+    config.active_job.queue_adapter = :sidekiq
   end
 end
